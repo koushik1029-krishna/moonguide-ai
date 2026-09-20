@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MoonGuide AI Testing and Security Report</title>
+  <style>
+    @page { size: letter; margin: 1in; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      font-variant-ligatures: none;
+    }
+    .sheet { break-after: page; page-break-after: always; }
+    .sheet:last-child { break-after: auto; page-break-after: auto; }
+    .running {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10pt;
+      font-style: italic;
+      line-height: 1;
+      margin: 0 0 6pt;
+    }
+    .running .n { font-style: normal; }
+    h1 {
+      font-size: 12pt;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      line-height: 2;
+    }
+    .byline { text-align: center; margin: 0; line-height: 2; }
+    h2 {
+      font-size: 12pt;
+      font-weight: bold;
+      margin: 4pt 0 1pt;
+      line-height: 1.1;
+    }
+    p { margin: 0 0 2pt; line-height: 1.18; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8pt;
+      line-height: 1.1;
+      margin: 1pt 0 3pt;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 1pt 2pt;
+      vertical-align: top;
+      text-align: left;
+    }
+    .refs p {
+      margin: 0 0 1pt 0.4in;
+      text-indent: -0.4in;
+      line-height: 1.3;
+      font-size: 11pt;
+    }
+    .note { font-size: 9.5pt; line-height: 1.2; }
+    @media screen {
+      body { background: #d0d0d0; }
+      .sheet {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 1in;
+        margin: 0.3in auto;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(0,0,0,.25);
+      }
+    }
+    @media print {
+      .sheet { width: auto; min-height: 0; padding: 0; margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <section class="sheet" aria-label="Page 1">
+    <div class="running"><span>MoonGuide AI Testing and Security Report</span><span class="n">1</span></div>
+    <h1>MoonGuide AI Testing and Security Report</h1>
+    <p class="byline">Krishna Koushik Naik Mude</p>
+    <p class="byline">Student</p>
+    <p class="byline">September 19, 2026</p>
+    <h2>Application Description</h2>
+    <p>MoonGuide AI is a local educational prototype for Moon’s Food Store. Guests ask about approved sample hours, location, products, services, and EBT/SNAP. Answers come only from <em>server/data/knowledge.json</em>. Unsupported questions fall back to an employee. Restricted-sale and ID questions escalate; the assistant does not approve a sale or replace a legally required ID check. Guest, Staff, and Manager views share in-browser chat and feedback. The manager gate is classroom demo PIN 1234 checked in the frontend, not a server secret and not Amazon Cognito (MoonGuide AI, 2026).</p>
+
+    <h2>Testing Environment</h2>
+    <table>
+      <tr><th>Item</th><th>Value</th></tr>
+      <tr><td>Tester / date</td><td>Krishna Koushik Naik Mude; September 19, 2026 (Cursor agent assisted)</td></tr>
+      <tr><td>OS / runtime</td><td>Windows 10; Node.js 18+</td></tr>
+      <tr><td>Frontend</td><td>http://localhost:5173/ (Vite; Cursor IDE embedded Chrome / CDP)</td></tr>
+      <tr><td>API</td><td>http://localhost:3001 and http://127.0.0.1:3001</td></tr>
+      <tr><td>Config</td><td>.env.example placeholders only: PORT, HOST, CORS_ORIGIN, NODE_ENV. No secrets file.</td></tr>
+    </table>
+
+    <h2>Feature-Testing Checklist</h2>
+    <p>Blank checklist rows are not marked Pass.</p>
+    <table>
+      <tr><th>Feature</th><th>Result</th><th>Evidence (this pass)</th></tr>
+      <tr><td>Guest</td><td>Pass (executed)</td><td>Limitations card (1.12); hours/beer UI; wine/ID; “?” validation; offline/backend-down connect copy.</td></tr>
+      <tr><td>Staff</td><td>Partial</td><td>Wine listed Restricted-sale escalation (14.5); failed offline EBT under review (11.5). Rows 2.1–2.6 not filled.</td></tr>
+      <tr><td>Manager</td><td>Code / audit only</td><td>PIN 1234 still DEMO_MANAGER_PIN in the client; lockout in ManagerPage.jsx. Rows 4.x not filled.</td></tr>
+      <tr><td>Chat</td><td>Pass (executed)</td><td>Hours, ATM, EBT, beer/ID, wine; retry after connect failure.</td></tr>
+      <tr><td>Restricted</td><td>Pass</td><td>UI wine and POST /api/ask beer/ID: no sale approval; employee ID check.</td></tr>
+      <tr><td>Fallback</td><td>Pass (copy)</td><td>Wifi-password turn still showed employee fallback.</td></tr>
+      <tr><td>Feedback</td><td>Not executed</td><td>Helpful / Not Helpful rows not completed.</td></tr>
+      <tr><td>Persistence</td><td>Code only</td><td>storage.js ignores bad JSON; unlock spoof remains. Rows 6.x not filled.</td></tr>
+      <tr><td>Health</td><td>Pass</td><td>GET /api/health 200; status ok; service moonguide-ai.</td></tr>
+    </table>
+
+    <h2>Screen Sizes and Input Types</h2>
+    <p>Formal rows 10.1–10.10 were not completed. Planned sizes are not claimed as executed viewport passes.</p>
+    <table>
+      <tr><th>Planned size</th><th>Result this pass</th></tr>
+      <tr><td>375 × 667 (phone)</td><td>Not executed. CSS stacks below 860px; controls measured 44px tall (14.9).</td></tr>
+      <tr><td>768 × 1024 (tablet)</td><td>Not executed.</td></tr>
+      <tr><td>1440 × 900 (desktop)</td><td>Not a named viewport pass. Guest used in the IDE browser default capture.</td></tr>
+    </table>
+    <p>Inputs used: mouse, typed form (“?” and store questions), suggested chips (ATM, EBT). Keyboard tab order inspected in the DOM; synthetic Tab/Arrow did not move focus. No NVDA. Screenshots in test-screenshots/: offline-guest-error.png, backend-down-first-500.png, backend-down-connect.png, api-health.png, guest-ui-hours.png, guest-ui-beer.png.</p>
+  </section>
+
+  <section class="sheet" aria-label="Page 2">
+    <div class="running"><span>MoonGuide AI Testing and Security Report</span><span class="n">2</span></div>
+
+    <h2>Bugs Found and Fixed</h2>
+    <table>
+      <tr><th>Issue</th><th>Evidence / impact</th><th>Resolution</th><th>Verification</th></tr>
+      <tr>
+        <td>Empty Vite-proxy HTTP 500 when Express stopped</td>
+        <td>ATM ask with Vite on 5173 first showed a generic 5xx “temporary problem” sentence (11.1).</td>
+        <td>Empty 5xx bodies map to connect copy in client/src/services/api.js.</td>
+        <td>Retry showed connect copy. Health 200 after restart. 11.2/11.4 not rerun.</td>
+      </tr>
+      <tr>
+        <td>Empty / short / punctuation questions</td>
+        <td>“?” is not a store look-up.</td>
+        <td>Shared validateQuestion: trim, min 2 characters, letter or number required.</td>
+        <td>Sent “?”: 2-character alert; aria-invalid; #question-error (14.4).</td>
+      </tr>
+      <tr>
+        <td>Duplicate submit</td>
+        <td>Overlapping POST /api/ask could confuse chat.</td>
+        <td>sendingRef plus wait message in ChatPanel.jsx.</td>
+        <td>Guard in source. Rapid-Enter row 9.6 not executed.</td>
+      </tr>
+      <tr>
+        <td>Malformed localStorage</td>
+        <td>Corrupt chat/feedback/role could crash load.</td>
+        <td>JSON fallback, sanitize, role allow-list.</td>
+        <td>Code review of storage.js. Rows 6.6–6.8 not executed.</td>
+      </tr>
+      <tr>
+        <td>Gold-only focus outline</td>
+        <td>~2.42:1 on white fails WCAG 2.2 SC 1.4.11 (World Wide Web Consortium [W3C], 2023).</td>
+        <td>Navy 3px outline plus gold halo.</td>
+        <td>Contrast Pass (14.1). Visible ring not confirmed in IDE browser (14.2 N/A).</td>
+      </tr>
+    </table>
+
+    <h2>Security Vulnerabilities Identified and Resolved</h2>
+    <p>The demo PIN was not moved off the frontend. DEMO_MANAGER_PIN is still “1234” in client/src/data/constants.js.</p>
+    <table>
+      <tr><th>Issue</th><th>Evidence / impact</th><th>Resolution</th><th>Verification</th></tr>
+      <tr><td>CORS allow-all</td><td>Any origin could call a reachable API (OWASP Foundation, 2021).</td><td>Dev: local Vite/Express only. Production: same-origin unless CORS_ORIGIN is set.</td><td>verify-security.mjs: local allow; evil.example not reflected.</td></tr>
+      <tr><td>Missing headers</td><td>Sniffing, framing, open script targets.</td><td>nosniff; DENY; CSP default-src 'self'; no X-Powered-By. Vite dev still lacks headers.</td><td>GET /api/health header checks in the security script.</td></tr>
+      <tr><td>No ask rate limit</td><td>Unauthenticated flood risk.</td><td>25 / 60 s per socket; 429 + Retry-After. In-memory only.</td><td>Script ask-rate-limit PASS.</td></tr>
+      <tr><td>Weak demo PIN (kept in client)</td><td>Public classroom PIN; not production auth.</td><td>Digits only; delay; 5 failures ≈ 20 s lockout; PIN not logged. Check stays in the browser.</td><td>Code review. Refresh clears lockout.</td></tr>
+      <tr><td>Logs / .env / 32 kb / Vite fs.allow</td><td>Stacks, leaked secrets, large bodies, parent-tree reads.</td><td>Sanitized logs; .env gitignored; express.json 32 kb; Vite allow client + ../shared.</td><td>14.7 logs; secrets search; 413 curl; vite.config.js review.</td></tr>
+    </table>
+
+    <h2>Accessibility and Responsible AI</h2>
+    <p>Landmarks; conversation list in role="log"; labels; skip link; roving tabIndex; named Send / Clear / phone controls. Contrast met WCAG 2.2 AA (muted 8.91:1; alert 9.08:1; navy-on-gold 5.50:1; W3C, 2023). Touch 44×44 px. Surfaces state answers may be incorrect. Restricted copy forbids sale approval and an automated ID decision. No name/email/payment fields; questions and PIN are not server-logged. Ask JSON omits sourceId. Bedrock, OpenSearch, and Cognito are disclosed as unimplemented.</p>
+
+    <h2>Final Verification Results</h2>
+    <table>
+      <tr><th>Check</th><th>Result</th></tr>
+      <tr><td>Build / API</td><td>npm run build --prefix client exit 0 (Vite 5.4.21, 58 modules). Health 200; hours/beer/ID 200; unknown API 404; oversized JSON 413.</td></tr>
+      <tr><td>npm audit</td><td>Root and server: 0 vulnerabilities. Client: remaining esbuild ≤0.24.2 via Vite 5 (GHSA-67mh-4wv8-2f99). Vite 8 force upgrade not applied (dev-server advisory).</td></tr>
+      <tr><td>Scripts</td><td>verify-security.mjs documented PASS (health, headers, CORS, 32 kb, 429). No npm test or lint script in package.json. Not invented.</td></tr>
+    </table>
+
+    <h2>Remaining Limitations</h2>
+    <p>localStorage moonguide.managerUnlocked still spoofs unlock; demo PIN 1234 stays in the client. Ask/store/health APIs stay unauthenticated. No NVDA pass; focus ring not confirmed in the IDE browser. Bedrock, OpenSearch, and Cognito are not implemented.</p>
+
+    <h2>References</h2>
+    <div class="refs">
+      <p>MoonGuide AI. (2026). <em>README.md</em> [Computer software documentation]. Local educational prototype.</p>
+      <p>OWASP Foundation. (2021). <em>OWASP top 10:2021</em>. https://owasp.org/Top10/</p>
+      <p>World Wide Web Consortium. (2023). <em>Web content accessibility guidelines (WCAG) 2.2</em>. https://www.w3.org/TR/WCAG22/</p>
+    </div>
+  </section>
+</body>
+</html>

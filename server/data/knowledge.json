@@ -1,0 +1,121 @@
+[
+  {
+    "id": "hours-001",
+    "category": "Store Hours",
+    "title": "Hours of operation",
+    "answer": "Moon's Food Store is open Monday through Sunday from 8:00 a.m. to 12:30 a.m.",
+    "keywords": ["hours", "open", "close", "closing", "opening", "time", "when", "schedule", "sunday", "monday", "weekend", "late"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "location-001",
+    "category": "Location",
+    "title": "Store address and phone",
+    "answer": "Moon's Food Store is located at 14000 Detroit Avenue, Cleveland, Ohio. You can call the store at 216-860-2588.",
+    "keywords": ["where", "located", "location", "address", "detroit", "cleveland", "ohio", "phone", "call", "number", "contact", "directions"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "services-001",
+    "category": "Store Services",
+    "title": "Available services",
+    "answer": "Moon's Food Store offers an ATM, Ohio Lottery, Delivery, and ASG services. A store employee can explain how to use each service. Lottery transactions require a trained employee.",
+    "keywords": ["services", "service", "available", "offer", "what do you have"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "services-atm",
+    "category": "Store Services",
+    "title": "ATM",
+    "answer": "Yes. Moon's Food Store has an ATM available for customers.",
+    "keywords": ["atm", "cash", "withdraw", "bank machine"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "services-delivery",
+    "category": "Store Services",
+    "title": "Delivery",
+    "answer": "Yes. Moon's Food Store provides delivery. Please ask a store employee for current delivery coverage, timing, and any order requirements. This assistant cannot place an order.",
+    "keywords": ["delivery", "deliver", "delivered", "bring", "order delivery"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "services-lottery",
+    "category": "Store Services",
+    "title": "Ohio Lottery availability",
+    "answer": "Moon's Food Store offers Ohio Lottery services. Lottery products are age-restricted. A trained employee must verify identification and complete any lottery transaction. This assistant cannot determine eligibility or complete a lottery purchase.",
+    "keywords": ["lottery", "ohio lottery", "lotto", "scratch"],
+    "lastUpdated": "2026-09-01",
+    "active": true,
+    "restricted": true
+  },
+  {
+    "id": "services-asg",
+    "category": "Store Services",
+    "title": "ASG",
+    "answer": "Moon's Food Store offers ASG as one of its listed store services. Please ask a store employee for details about using ASG at this location.",
+    "keywords": ["asg"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "products-001",
+    "category": "Product Categories",
+    "title": "Product categories",
+    "answer": "Moon's Food Store carries groceries, snacks, beverages, frozen foods, beer, wine, tobacco products, and vape products. Beer, wine, tobacco, and vape products are age-restricted. A trained employee must verify identification before any restricted sale. This assistant cannot confirm whether a specific item is in stock.",
+    "keywords": ["products", "sell", "carry", "categories", "groceries", "what do you sell", "items"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "products-frozen",
+    "category": "Product Categories",
+    "title": "Frozen foods",
+    "answer": "Yes. Frozen foods are one of the approved product categories at Moon's Food Store. An employee must confirm whether a specific frozen item is currently available.",
+    "keywords": ["frozen", "freezer", "ice cream", "frozen food"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "products-snacks",
+    "category": "Product Categories",
+    "title": "Snacks, groceries, and beverages",
+    "answer": "Yes. Moon's Food Store carries groceries, snacks, and beverages. Prices and inventory can change, so an employee should confirm current information for a specific item.",
+    "keywords": ["snacks", "snack", "grocery", "groceries", "beverages", "drinks", "food"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "ebt-001",
+    "category": "EBT/SNAP",
+    "title": "EBT and SNAP",
+    "answer": "Moon's Food Store can discuss EBT/SNAP at checkout. Eligible grocery items may be purchased with EBT/SNAP according to program rules. Alcohol, tobacco, vape products, lottery, and other non-eligible items cannot be paid with EBT/SNAP. A store employee must confirm which items in a transaction are eligible. This assistant cannot approve a payment method, decide SNAP eligibility, or complete a purchase.",
+    "keywords": ["ebt", "snap", "food stamps", "quest", "benefits", "accept ebt", "ebt card"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "policy-001",
+    "category": "Store Policies",
+    "title": "General store policies",
+    "answer": "Moon's Food Store employees can help with store hours, location, services, and product questions. Prices and inventory may change at any time. This assistant shares only approved sample store information and cannot place orders, process payments, give legal advice, or promise that a particular item is in stock. For anything not covered here, please ask a store employee.",
+    "keywords": ["policy", "policies", "rules", "return", "price", "prices", "stock", "inventory", "available", "in stock"],
+    "lastUpdated": "2026-09-01",
+    "active": true
+  },
+  {
+    "id": "safety-restricted",
+    "category": "Restricted Product Safety",
+    "title": "Age-restricted products",
+    "answer": "Beer, wine, tobacco products, vape products, and lottery services are age-restricted. A trained Moon's Food Store employee must verify identification in person and make the final decision. This assistant cannot approve an age-restricted sale, decide whether an ID is valid, decide whether a person is legally eligible, or replace a legally required identification check.",
+    "keywords": ["restricted", "age", "id", "identification", "alcohol", "beer", "wine", "tobacco", "cigarette", "vape", "lottery"],
+    "lastUpdated": "2026-09-01",
+    "active": true,
+    "restricted": true
+  }
+]
